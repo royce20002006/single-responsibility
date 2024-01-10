@@ -36,6 +36,13 @@ const recipes = {
 function bakeAndSellPies(pieType, pieQuantity, profitMargin) {
   // Find the recipe for the pieType specified
   const recipe = recipes[pieType];
+  
+  bakePies(recipe, pieType, pieQuantity);
+  sellPies(pieQuantity, profitMargin, recipe)
+  
+}
+
+const bakePies = (recipe, pieType, pieQuantity) => {
   // Bake the number of pies specified by the pieQuantity
   for (let i = 0; i < pieQuantity; i++) {
     // Print the ingredients for each ingredient in the recipe
@@ -46,7 +53,9 @@ function bakeAndSellPies(pieType, pieQuantity, profitMargin) {
     // Print the nth pie that was baked
     console.log(`Baked pie ${i + 1}!`);
   }
+}
 
+const sellPies = (pieQuantity, profitMargin, recipe) => {
   // Print the cost of each pie based on the cost of each ingredient
   const costOfPie = recipe.reduce((prev, current) => {
     return prev + current.cost;
